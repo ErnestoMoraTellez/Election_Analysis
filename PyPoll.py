@@ -33,5 +33,3 @@ with open(file_to_save, "w") as txt_file:
     txt_file.write("--------------------------\n")
     # Write three counties to the file.
     txt_file.write("Arapahoe\nDenver\nJefferson")
-
-    #hola
