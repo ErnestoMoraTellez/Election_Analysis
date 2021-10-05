@@ -200,3 +200,5 @@ The result looks like this:
 ![image](https://user-images.githubusercontent.com/88845919/135953505-10b0de29-af1b-4efd-8078-c054668ca938.png)
 
 ## Election-Audit Summary
+
+With this script we can automate the election result process. We just need to have the votes in some csv document in the same oder as we already have. We can change the script and add some variables for the path of the document and also for the name of the document. Other thing is that we can add some interaction with the user, using the input function, we can ask for the path and name of the document and use the script for any other election. This save us time and money, making really easy to confirm the actual winner of any election.
