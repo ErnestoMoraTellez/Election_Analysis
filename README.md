@@ -11,32 +11,32 @@ With the use of python, we want to automate the counting of the votes to determi
 To determine the total votes, first we need to import the python library of CSV and OS to access the csv document information. And we create a variable to stock the toal number of votes.
 
 -------------------------------------------------------------------------------------------------------------------------------
-"Add our dependencies.
-import csv
-import os
+    "Add our dependencies.
+    import csv
+    import os
 
-"Add a variable to load a file from a path.
-file_to_load = os.path.join("Resources", "election_results.csv")
-"Add a variable to save the file to a path.
-file_to_save = os.path.join("analysis", "election_analysis.txt")
+    "Add a variable to load a file from a path.
+    file_to_load = os.path.join("Resources", "election_results.csv")
+    "Add a variable to save the file to a path.
+    file_to_save = os.path.join("analysis", "election_analysis.txt")
 
-"Initialize a total vote counter.
-total_votes = 0
+    "Initialize a total vote counter.
+    total_votes = 0
 
-In order to increase the sum of the votes to get the total. We acces to the document with the csv library and with a for loop we navegate through all the rows, adding one by one the votes
+    In order to increase the sum of the votes to get the total. We acces to the document with the csv library and with a for loop we navegate through all the rows, adding one by one the votes
 
-"Read the csv and convert it into a list of dictionaries
-with open(file_to_load) as election_data:
-    reader = csv.reader(election_data)
+    "Read the csv and convert it into a list of dictionaries
+    with open(file_to_load) as election_data:
+        reader = csv.reader(election_data)
 
-    "Read the header
-    header = next(reader)
+        "Read the header
+        header = next(reader)
 
-    "For each row in the CSV file.
-    for row in reader:
+        "For each row in the CSV file.
+        for row in reader:
 
-        "Add to the total vote count
-        total_votes = total_votes + 1
+            "Add to the total vote count
+            total_votes = total_votes + 1
 
 -------------------------------------------------------------------------------------------------------------------------------
 
@@ -49,10 +49,10 @@ To determine the number of votes and percetage of total votes of each county, we
 
 -------------------------------------------------------------------------------------------------------------------------------
 
-"Create a county list and county votes dictionary.
+    "Create a county list and county votes dictionary.
 
-county_options = []
-county_votes = {}
+    county_options = []
+    county_votes = {}
 
 -------------------------------------------------------------------------------------------------------------------------------
 
@@ -60,26 +60,24 @@ To get the total information about county, we need to count the votes and sum de
 
 -------------------------------------------------------------------------------------------------------------------------------
 
- "4a: Write an if statement that checks that the
-        "county does not match any existing county in the county list.
-        if county not in county_options:
+     "4a: Write an if statement that checks that the
+            "county does not match any existing county in the county list.
+            if county not in county_options:
 
-            "4b: Add the existing county to the list of counties.
-            county_options.append(county)
+                "4b: Add the existing county to the list of counties.
+                county_options.append(county)
 
-            "4c: Begin tracking the county's vote count.
-            county_votes[county] = 0
+                "4c: Begin tracking the county's vote count.
+                county_votes[county] = 0
 
-        "5: Add a vote to that county's vote count.
-        county_votes[county] += 1
+            "5: Add a vote to that county's vote count.
+            county_votes[county] += 1
         
 -------------------------------------------------------------------------------------------------------------------------------
 
 Ones we have our list with all the counties and the total votes, we calculate the percentange of it and print the result.
 
 -------------------------------------------------------------------------------------------------------------------------------
-
-txt_file.write(election_results)
 
     "6a: Write a for loop to get the county from the county dictionary.
     for county  in county_options:
@@ -106,17 +104,17 @@ To get the largest number of votes, we just compare with a if statement the actu
 
 -------------------------------------------------------------------------------------------------------------------------------
 
-# 6f: Write an if statement to determine the winning county and get its vote count.
-        if (votes > winning_county_count):
-            winning_county_count = votes
-            winning_county = county
+    # 6f: Write an if statement to determine the winning county and get its vote count.
+            if (votes > winning_county_count):
+                winning_county_count = votes
+                winning_county = county
 
-    # 7: Print the county with the largest turnout to the terminal.
-    winning_county_summary = (
-        f"-------------------------\n"
-        f"Largest County Turnout: {winning_county}\n"
-        f"-------------------------\n\n")
-    print(winning_county_summary)
+        # 7: Print the county with the largest turnout to the terminal.
+        winning_county_summary = (
+            f"-------------------------\n"
+            f"Largest County Turnout: {winning_county}\n"
+            f"-------------------------\n\n")
+        print(winning_county_summary)
 
 -------------------------------------------------------------------------------------------------------------------------------
 
@@ -130,44 +128,44 @@ To determine the differente candidates and votes for each, we use the same metho
 
 -------------------------------------------------------------------------------------------------------------------------------
 
-"For each row in the CSV file.
-    for row in reader:
+    "For each row in the CSV file.
+        for row in reader:
 
-        "Add to the total vote count
-        total_votes = total_votes + 1
+            "Add to the total vote count
+            total_votes = total_votes + 1
 
-        "Get the candidate name from each row.
-        candidate_name = row[2]
+            "Get the candidate name from each row.
+            candidate_name = row[2]
 
-        "3: Extract the county name from each row.
-        county = row[1]
-
-
-        "If the candidate does not match any existing candidate add it to
-        "the candidate list
-        if candidate_name not in candidate_options:
-
-            "Add the candidate name to the candidate list.
-            candidate_options.append(candidate_name)
-
-            "And begin tracking that candidate's voter count.
-            candidate_votes[candidate_name] = 0
-
-        "Add a vote to that candidate's count
-        candidate_votes[candidate_name] += 1
+            "3: Extract the county name from each row.
+            county = row[1]
 
 
-"Save the final candidate vote count to the text file.
-    for candidate_name in candidate_votes:
+            "If the candidate does not match any existing candidate add it to
+            "the candidate list
+            if candidate_name not in candidate_options:
 
-        "Retrieve vote count and percentage
-        votes = candidate_votes.get(candidate_name)
-        vote_percentage = float(votes) / float(total_votes) * 100
-        candidate_results = (
-            f"{candidate_name}: {vote_percentage:.1f}% ({votes:,})\n")
+                "Add the candidate name to the candidate list.
+                candidate_options.append(candidate_name)
 
-        "Print each candidate's voter count and percentage to the terminal.
-        print(candidate_results)
+                "And begin tracking that candidate's voter count.
+                candidate_votes[candidate_name] = 0
+
+            "Add a vote to that candidate's count
+            candidate_votes[candidate_name] += 1
+
+
+    "Save the final candidate vote count to the text file.
+        for candidate_name in candidate_votes:
+
+            "Retrieve vote count and percentage
+            votes = candidate_votes.get(candidate_name)
+            vote_percentage = float(votes) / float(total_votes) * 100
+            candidate_results = (
+                f"{candidate_name}: {vote_percentage:.1f}% ({votes:,})\n")
+
+            "Print each candidate's voter count and percentage to the terminal.
+            print(candidate_results)
 
 -------------------------------------------------------------------------------------------------------------------------------
 
@@ -180,20 +178,20 @@ To determine the winner of the election, we use a if statement to get the person
 
 -------------------------------------------------------------------------------------------------------------------------------
 
-"Determine winning vote count, winning percentage, and candidate.
-        if (votes > winning_count) and (vote_percentage > winning_percentage):
-            winning_count = votes
-            winning_candidate = candidate_name
-            winning_percentage = vote_percentage
+    "Determine winning vote count, winning percentage, and candidate.
+            if (votes > winning_count) and (vote_percentage > winning_percentage):
+                winning_count = votes
+                winning_candidate = candidate_name
+                winning_percentage = vote_percentage
 
-    "Print the winning candidate (to terminal)
-    winning_candidate_summary = (
-        f"-------------------------\n"
-        f"Winner: {winning_candidate}\n"
-        f"Winning Vote Count: {winning_count:,}\n"
-        f"Winning Percentage: {winning_percentage:.1f}%\n"
-        f"-------------------------\n")
-    print(winning_candidate_summary)
+        "Print the winning candidate (to terminal)
+        winning_candidate_summary = (
+            f"-------------------------\n"
+            f"Winner: {winning_candidate}\n"
+            f"Winning Vote Count: {winning_count:,}\n"
+            f"Winning Percentage: {winning_percentage:.1f}%\n"
+            f"-------------------------\n")
+        print(winning_candidate_summary)
     
 -------------------------------------------------------------------------------------------------------------------------------
 
